@@ -1,4 +1,4 @@
-name: PR tests
+name: PR tests with coverage
 on:
   pull_request:
     branches:
