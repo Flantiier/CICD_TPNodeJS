@@ -1,0 +1,19 @@
+name: conventionnal-commits-check
+on:
+  push:
+    branches:
+      - 'feature/*'
+      - 'hotfix/*'
+
+jobs:
+  check-commit-conventions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Verify feat
+        if: startsWith(github.event.head_commit.message, 'feat:')
+        run: echo "Ceci est une feature"
+      - name: Verify feat
+        if: startsWith(github.event.head_commit.message, 'hotfix:')
+        run: echo "Ceci est un hotfix"
