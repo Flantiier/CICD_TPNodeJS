@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Create branch
         run: |
-          ISSUE_TITLE="${{ github.event.issue.title }}"
+          ISSUE_TITLE=${{ github.event.issue.title }}
           BRANCH="feature/issue-${ISSUE_TITLE}"
 
           #create branch
