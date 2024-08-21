@@ -6,9 +6,9 @@ on:
 
 jobs:
   start-test:
-    runs-on: ubuntu-latest
     # Add branch condition (Only for feature branches)
     if: startsWith(github.head_ref, 'feature/')
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
