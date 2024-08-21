@@ -12,7 +12,7 @@ jobs:
       - name: Create branch
         run: |
           ISSUE_TITLE=${{ github.event.issue.title }}
-          BRANCH="feature/issue-${ISSUE-TITLE}"
+          BRANCH="feature/issue-${ISSUE_TITLE}"
 
           #create branch
           git fetch origin develop
