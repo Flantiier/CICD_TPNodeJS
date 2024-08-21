@@ -30,6 +30,6 @@ jobs:
       - name: Generate coverage
         uses: actions/upload-artifact@v4
         with:
-          name: coverage
+          name: coverage-node-${{ matrix.node-version }}
           path: ./coverage.txt
 
