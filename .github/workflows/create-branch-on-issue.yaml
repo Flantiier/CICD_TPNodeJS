@@ -15,7 +15,7 @@ jobs:
           BRANCH="feature/issue-${ISSUE-TITLE}"
 
           #create branch
-          git branch $BRANCH origin/develop
-          git checkout $BRANCH
+          git fetch origin develop
+          git checkout -b $BRANCH origin/develop
           git push origin $BRANCH
           echo "Created branch: $BRANCH"
