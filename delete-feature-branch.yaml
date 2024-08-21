@@ -1,0 +1,14 @@
+name: delete-feature-branch-on-merge
+on: 
+  pull_request:
+    types: closed
+
+jobs:
+  delete-feature-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check code
+        uses: actions/checkout@v4
+      - name: delete branch
+        if: ${{ github.event.pull_request.head.ref }} == feature/*
+        run: git push origin --delete ${{ github.event.pull_request.head.ref }}

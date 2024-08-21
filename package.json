@@ -1,0 +1,14 @@
+{
+  "name": "cicd_tpnodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts":
+  {
+    "test": "echo 'Tests has started!' > ./tests.txt",
+    "test:coverage": "echo 'Tests has started!' > ./coverage.txt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

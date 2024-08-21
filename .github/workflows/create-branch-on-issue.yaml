@@ -1,0 +1,21 @@
+name: create-branch-on-issue
+on:
+  issues:
+    types: [assigned]
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check code
+        uses: actions/checkout@v4
+      - name: Create branch
+        run: |
+          ISSUE_TITLE=${{ github.event.issue.title }}
+          BRANCH="feature/issue-${ISSUE-TITLE}"
+
+          #create branch
+          git branch $BRANCH origin/develop
+          git checkout $BRANCH
+          git push origin $BRANCH
+          echo "Created branch: $BRANCH"

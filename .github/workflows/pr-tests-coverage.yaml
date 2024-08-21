@@ -1,0 +1,35 @@
+name: PR tests
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  start-test:
+    runs-on: ubuntu-latest
+    # Add branch condition (Only for feature branches)
+    if: startsWith(github.head_ref, 'feature/')
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [14, 16]
+    
+    # Run tests
+    steps:
+      - name: Checkout code
+        run: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install setup
+        run: npm install
+      - name: Run tests
+        run: npm run test:coverage
+      # Generate artifact
+      - name: Generate coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: ./coverage.txt
+
